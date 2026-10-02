@@ -1,0 +1,47 @@
+/* Design tokens — colours and layout values carried over from the Macaly build,
+   plus a motion scale shared by every interaction. */
+:root {
+  --space: #313746;
+  --space-deep: #081126;
+  --ink: #080b12;
+  --ink-soft: #4d5667;
+  --ink-mute: #7c8594;
+  --aqua: #8fe8dc;
+  --aqua-bright: #b4f5ed;
+  --aqua-deep: #4fc7b8;
+  --coral: #ef655e;
+  --mist: #e9ebee;
+  --cloud: #fff;
+  --line: #dfe4eb;
+  --line-strong: #c9d0da;
+
+  /* one content width for every section, heroes included */
+  --gutter: clamp(20px, 4.2vw, 60px);
+  --wrap: min(var(--content-max), calc(100% - 2 * var(--gutter)));
+
+  --hero-radius: 23px;
+  --content-max: 1320px;
+  --hero-width: 1176px;
+  --hero-height: 560px;
+  --hero-pad-x: 69px;
+  --hero-pad-y: 69px;
+  --hero-title-size: 55px;
+  --hero-title-leading: 1.12;
+  --hero-title-max: 635px;
+  --hero-intro-size: 19px;
+  --hero-intro-leading: 1.65;
+  --hero-intro-max: 500px;
+  --hero-copy-gap: 32px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* expo-out: arrivals */
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1); /* fades */
+  --ease-in-out: cubic-bezier(0.65, 0.05, 0.36, 1); /* state changes */
+  --t-fast: 180ms;
+  --t-mid: 320ms;
+  --t-slow: 640ms;
+  --t-reveal: 900ms;
+
+  --shadow-soft: 0 1px 2px #0811260a, 0 8px 24px -12px #08112626;
+  --shadow-lift: 0 2px 4px #0811260a, 0 28px 60px -24px #0811263d;
+}

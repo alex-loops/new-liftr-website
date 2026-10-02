@@ -1,0 +1,129 @@
+/* =====================================================================
+   Motion language
+   - arrivals use expo-out (fast start, long settle), 0.7–1.0s
+   - state changes (hover/press/toggle) 180–500ms
+   - only opacity / transform / clip are animated
+   - everything is gated behind html.js so no-JS visitors see content
+   ===================================================================== */
+
+/* Hidden states use :where() so they carry no extra specificity —
+   hover rules in sections.css keep working once an element has arrived. */
+
+/* fade-up: body copy, eyebrows, small groups */
+.js :where([data-reveal='up']) {
+  transition:
+    opacity 0.7s var(--ease-soft) var(--d, 0ms),
+    transform 0.95s var(--ease-out) var(--d, 0ms),
+    border-color var(--t-mid),
+    background-color var(--t-mid),
+    box-shadow 0.5s var(--ease-out);
+}
+.js :where([data-reveal='up']:not(.is-in)) {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+}
+
+/* cards: stagger by index, slight scale so the grid "settles" */
+.js :where([data-reveal='card']) {
+  transition:
+    opacity 0.7s var(--ease-soft) calc(var(--i, 0) * 80ms),
+    transform 1s var(--ease-out) calc(var(--i, 0) * 80ms),
+    box-shadow 0.6s var(--ease-out),
+    border-color var(--t-mid);
+}
+.js :where([data-reveal='card']:not(.is-in)) {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0) scale(0.985);
+}
+
+/* rise: large panels (process intro, spark, stat card) */
+.js :where([data-reveal='rise']) {
+  clip-path: inset(0 0 0 0 round 24px);
+  transition:
+    opacity 0.8s var(--ease-soft) var(--d, 0ms),
+    transform 1.1s var(--ease-out) var(--d, 0ms),
+    clip-path 1.1s var(--ease-out) var(--d, 0ms);
+}
+.js :where([data-reveal='rise']:not(.is-in)) {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
+  clip-path: inset(10% 0 0 0 round 24px);
+}
+
+/* after arrival, interactions respond immediately (no inherited stagger) */
+.js .is-settled {
+  transition-delay: 0s !important;
+}
+
+/* masked word rise for headings */
+.split-w {
+  display: inline-block;
+  overflow: clip;
+  vertical-align: top;
+  /* room for descenders/ascenders inside the mask */
+  padding: 0.08em 0 0.14em;
+  margin: -0.08em 0 -0.14em;
+}
+.split-i {
+  display: inline-block;
+}
+.js .split .split-i {
+  transform: translate3d(0, 112%, 0) rotate(2deg);
+  transform-origin: 0 100%;
+  transition: transform 1s var(--ease-out) calc(var(--d, 0ms) + var(--i) * var(--s, 32ms));
+}
+.js .split.is-in .split-i {
+  transform: none;
+}
+
+/* route transitions (View Transitions API, progressive) */
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0);
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+}
+::view-transition-old(root) {
+  animation: vt-out 0.22s var(--ease-soft) both;
+}
+::view-transition-new(root) {
+  animation: vt-in 0.5s var(--ease-out) both;
+}
+
+/* ===================================================== reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+  }
+  .js [data-reveal],
+  .js .split .split-i,
+  .js .hero-fade,
+  .js .hero-eyebrow,
+  .js .liftr-hero .glass-stage,
+  .js .liftr-hero:not(.is-in) {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .contact-section {
+    transform: none !important;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
