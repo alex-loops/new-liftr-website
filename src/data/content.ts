@@ -1,4 +1,4 @@
-export type MilestoneSlug = 'spark' | 'signal' | 'engine' | 'momentum'
+export type MilestoneSlug = 'prove-the-pain' | 'prove-the-demand' | 'engine' | 'momentum'
 
 /** Surface colour shared by a page's hero and its closing CTA. */
 export type Theme = 'paper' | 'aqua' | 'slate' | 'navy' | 'steel'
@@ -14,6 +14,8 @@ export const homeLook: Look = { theme: 'paper', layout: 'center' }
 
 export interface Milestone {
   slug: MilestoneSlug
+  /** shown in nav, homepage and routes; Engine & Momentum are paused for now */
+  active: boolean
   look: Look
   index: string
   name: string
@@ -35,21 +37,22 @@ export interface Milestone {
 
 export const milestones: Milestone[] = [
   {
-    slug: 'spark',
+    slug: 'prove-the-pain',
+    active: true,
     look: { theme: 'aqua', layout: 'center' },
     index: '01',
-    name: 'Spark',
-    proof: 'Prove the pain',
+    name: 'Prove the pain',
+    proof: 'Validate the problem',
     duration: '2–4 weeks',
     summary: 'Validate that the problem is worth solving before you commit to a build.',
     hero: {
       title: 'Build smarter. Launch faster. Win bigger.',
       intro:
-        'Before you spend a single line of code, Spark helps you validate your product direction with real users - so you launch with confidence, not guesswork.',
+        'Before you spend a single line of code, we help you validate your product direction with real users - so you launch with confidence, not guesswork.',
     },
     challenge: {
       title: 'Think you know the problem? Great. Now prove it.',
-      body: 'Your instincts got you this far - now let’s make sure they hold up in the wild. Spark puts your assumptions under the microscope through fast, structured user validation. So you’re not just building - you’re building what matters.',
+      body: 'Your instincts got you this far - now let’s make sure they hold up in the wild. We put your assumptions under the microscope through fast, structured user validation. So you’re not just building - you’re building what matters.',
       stat: '80% of first-time founders pivot after launch. Most never validated early enough.',
     },
     deliverables: [
@@ -71,37 +74,38 @@ export const milestones: Milestone[] = [
     objections: [
       {
         q: 'I’ve lived this problem - I don’t need validation.',
-        a: 'That’s your edge. Spark reveals how others experience it, so you sharpen your instincts with evidence.',
+        a: 'That’s your edge. We show you how others experience it, so you sharpen your instincts with evidence.',
       },
       {
         q: 'I can’t justify the spend before I raise.',
-        a: 'Think of Spark as your investor-ready insight engine. The clarity becomes the foundation of your pitch.',
+        a: 'Think of it as your investor-ready insight engine. The clarity becomes the foundation of your pitch.',
       },
       { q: 'Can’t we just start building?', a: 'You can, but correcting a wrong bet after the build starts costs far more.' },
     ],
     deliverablesNote: "Delivered in just 2–4 weeks by your dedicated Product Lead.",
     processNote: "Flexible scope. Tailored pace. Built to match your runway.",
     objectionsTitle: "What founders typically ask.",
-    closing: { title: "Let’s make sure you’re building the right thing.", body: "You’ve got the vision. Spark adds the clarity that makes it investable - and buildable.", cta: "Talk to a Product Leader" },
+    closing: { title: "Let’s make sure you’re building the right thing.", body: "You’ve got the vision. We add the clarity that makes it investable - and buildable.", cta: "Talk to a Product Leader" },
     pricing:
-      'Spark starts around £10k–£15k depending on depth and urgency. It’s a time-and-materials model - no bloated scope, no surprise fees.',
+      'Prove the pain starts around £10k–£15k depending on depth and urgency. It’s a time-and-materials model - no bloated scope, no surprise fees.',
   },
   {
-    slug: 'signal',
+    slug: 'prove-the-demand',
+    active: true,
     look: { theme: 'slate', layout: 'split' },
     index: '02',
-    name: 'Signal',
-    proof: 'Prove the demand',
+    name: 'Prove the demand',
+    proof: 'Validate the solution',
     duration: '4–6 weeks',
     summary: 'Turn your concept into a sharp, testable product and earn early validation.',
     hero: {
       title: 'Prototype something real enough to earn your first customer.',
       intro:
-        'Signal turns your concept into a sharp, testable product - not a throwaway demo, but a lean build that earns validation, traction and maybe even your first revenue.',
+        'We turn your concept into a sharp, testable product - not a throwaway demo, but a lean build that earns validation, traction and maybe even your first revenue.',
     },
     challenge: {
       title: 'You’ve validated the problem. Now it’s time to show the solution.',
-      body: 'Your early conviction is solid. Now investors, users and teammates need to see more than slides. Signal is where your idea becomes something concrete - credible enough to test, share and ship with confidence.',
+      body: 'Your early conviction is solid. Now investors, users and teammates need to see more than slides. This is where your idea becomes something concrete - credible enough to test, share and ship with confidence.',
       stat: 'Startups that validate demand early raise 30% more pre-seed capital.',
     },
     deliverables: [
@@ -122,20 +126,21 @@ export const milestones: Milestone[] = [
     },
     objections: [
       { q: 'What if this doesn’t get traction?', a: 'Then you’ve learned fast and affordably - and we iterate.' },
-      { q: 'Can’t I just build an MVP?', a: 'Only if you already have proof people want it. Signal earns you that proof fast.' },
+      { q: 'Can’t I just build an MVP?', a: 'Only if you already have proof people want it. This plan earns you that proof fast.' },
       {
         q: 'A freelancer could build this cheaper.',
-        a: 'Maybe. Signal combines delivery with strategic product thinking so you build the right thing.',
+        a: 'Maybe. We combine delivery with strategic product thinking so you build the right thing.',
       },
     ],
     deliverablesNote: "Built in 4–6 weeks by a senior product team. Nothing generic. Nothing throwaway.",
     objectionsTitle: "Smart founders ask the tough questions.",
-    closing: { title: "Ready to prove your product with something real?", body: "Signal gives you a credible, testable build to win first users, validate demand and move forward with confidence.", cta: "Talk to a Product Leader" },
+    closing: { title: "Ready to prove your product with something real?", body: "You get a credible, testable build to win first users, validate demand and move forward with confidence.", cta: "Talk to a Product Leader" },
     pricing:
-      'Most Signal builds range between £20k–£40k, depending on depth and complexity. We scope leanly, move quickly and flex to your runway.',
+      'Most Prove the demand builds range between £20k–£40k, depending on depth and complexity. We scope leanly, move quickly and flex to your runway.',
   },
   {
     slug: 'engine',
+    active: false,
     look: { theme: 'navy', layout: 'split-reverse' },
     index: '03',
     name: 'Engine',
@@ -190,6 +195,7 @@ export const milestones: Milestone[] = [
   },
   {
     slug: 'momentum',
+    active: false,
     look: { theme: 'steel', layout: 'split-reverse' },
     index: '04',
     name: 'Momentum',
@@ -254,4 +260,94 @@ export const sparkPoints = [
   'A focused build plan for your next milestone',
 ]
 
-export const getMilestone = (slug: string) => milestones.find((m) => m.slug === slug)
+export const activeMilestones = milestones.filter((m) => m.active)
+export const getMilestone = (slug: string) => activeMilestones.find((m) => m.slug === slug)
+/** old URLs from before the plans were renamed */
+export const legacySlugs: Record<string, MilestoneSlug> = { spark: 'prove-the-pain', signal: 'prove-the-demand' }
+
+/* ------------------------------------------------------------------ home */
+/* Copy adapted from the Liftr pitch deck (2026). */
+
+export const homeHero = {
+  title: 'Senior operators who help you build the right product - then build it.',
+  intro: 'A product-led development studio for ambitious pre-seed and seed founders.',
+}
+
+/** Where the founders' operating experience comes from — not Liftr clients. */
+export const pedigree = ['Funding Circle', 'Depop', 'Spendesk', 'ClearScore', 'Google']
+
+export const problem = {
+  title: 'Most teams build what you ask. Few help you know what’s worth building.',
+  points: [
+    {
+      title: 'Built the wrong thing',
+      body: 'Agencies and freelancers execute the brief - even when the brief is wrong. Founders burn a runway proving it.',
+    },
+    {
+      title: 'Slow and unreliable delivery',
+      body: 'Quality and pace slip once the contract is signed. Timelines drift and trust erodes.',
+    },
+    {
+      title: 'No real partnership',
+      body: 'The team disappears after launch. No skin in the game, no continuity, no ownership of the outcome.',
+    },
+  ],
+}
+
+export const proposition = {
+  title: 'A product partner, not a dev shop.',
+  body: 'We embed senior product and engineering leadership into your build - the same calibre that scaled Funding Circle, Depop and Spendesk - so the team shaping what to build is the team that ships it.',
+  points: [
+    { title: 'Product judgement', body: 'We pressure-test what to build before we write a line of code.' },
+    { title: 'Senior, hands-on', body: 'Operators who’ve built and scaled real products - not a junior bench.' },
+    { title: 'Invested in outcomes', body: 'We can take part of our fee in equity and back our own calls.' },
+  ],
+}
+
+export const howWeWork = {
+  title: 'Senior teams, embedded and AI-native.',
+  points: [
+    {
+      title: 'Embedded teams',
+      body: 'We grow a team that thinks alongside yours - and hand skills in-house over time.',
+    },
+    {
+      title: 'Vertical ownership',
+      body: 'We design it, code it, ship it and grow it. Always your product - but we care about it like our own.',
+    },
+    {
+      title: 'AI-native delivery',
+      body: 'Modern AI tooling lets a small senior team ship at a pace a larger one used to.',
+    },
+    {
+      title: 'Flexible ramp',
+      body: 'Scale the team up or down around your runway and your product-market-fit evidence. No lock-in.',
+    },
+  ],
+}
+
+export const alignment = {
+  title: 'We can invest alongside you.',
+  body: 'Convert part of our fee into equity. We reduce your cash burn, share the risk and stay invested in the outcome - not just the invoice. A development-for-equity partnership is already underway.',
+  heading2: 'Three ways we protect your runway.',
+  points: [
+    {
+      title: 'Leadership included',
+      body: 'VP / CPO-level product guidance is included in every partnership.',
+    },
+    {
+      title: 'Equity for rate',
+      body: 'Trade 10–15% of our cash rate for an aligned equity stake - preserving runway when it matters most.',
+    },
+    {
+      title: 'Patient exit',
+      body: 'We come on as a long-term partner and sell down at a later round - never a drag on your raise.',
+    },
+  ],
+}
+
+export const homeClosing = {
+  title: 'Let’s build something worth building.',
+  body: 'Senior product and engineering operators, invested in your outcome.',
+  cta: 'Talk to a Product Leader',
+}

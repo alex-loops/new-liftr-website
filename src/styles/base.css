@@ -29,7 +29,7 @@ a {
   color: var(--space-deep);
 }
 :focus-visible {
-  outline: 2px solid var(--space-deep);
+  outline: 2px solid var(--focus);
   outline-offset: 3px;
   border-radius: 8px;
 }
@@ -51,12 +51,12 @@ a {
 }
 
 .site {
-  background: linear-gradient(180deg, #fff 0%, #fff 46%, var(--mist) 100%);
+  background: linear-gradient(180deg, var(--page-top) 0%, var(--page-top) 46%, var(--mist) 100%);
   min-height: 100vh;
 }
 
 .eyebrow {
-  color: #59677f;
+  color: var(--mute);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin: 0;

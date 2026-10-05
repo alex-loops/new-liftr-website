@@ -4,7 +4,7 @@
   top: 0;
   -webkit-backdrop-filter: blur(18px) saturate(1.4);
   backdrop-filter: blur(18px) saturate(1.4);
-  background: #ffffffc7;
+  background: var(--header-bg);
   border-bottom: 1px solid #31374600;
   transition:
     transform 0.5s var(--ease-out),
@@ -13,7 +13,7 @@
     box-shadow var(--t-mid) var(--ease-soft);
 }
 .site-header.is-scrolled {
-  background: #ffffffe6;
+  background: var(--header-bg-solid);
   border-bottom-color: #3137461a;
   box-shadow: 0 10px 30px -24px #08112640;
 }
@@ -40,6 +40,7 @@
   gap: 10px;
 }
 .logo-mark {
+  color: #fe5252;
   height: 30px;
   width: 30px;
   transition: transform 0.9s var(--ease-out);
@@ -135,7 +136,7 @@
   width: 340px;
   padding: 8px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--card);
   border-radius: 18px;
   box-shadow:
     0 1px 2px #0811260d,
@@ -203,7 +204,7 @@
 .dd-meta {
   font-size: 11px;
   color: var(--ink-mute);
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 4px 8px;
@@ -224,7 +225,7 @@
   height: 44px;
   border-radius: 50%;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--card);
   cursor: pointer;
   transition: background-color var(--t-fast), border-color var(--t-fast);
 }
@@ -258,7 +259,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 108px 24px 32px;
-  background: #fff;
+  background: var(--card);
   clip-path: inset(0 0 100% 0);
   visibility: hidden;
   transition:

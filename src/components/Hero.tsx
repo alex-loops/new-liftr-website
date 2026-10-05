@@ -15,8 +15,8 @@ interface Props {
 
 /**
  * Hero card, spanning the site's content width.
- *   center         – type centred, sculpture rising beneath it (Home, Spark)
- *   split          – type left, sculpture right (Signal)
+ *   center         – type centred, sculpture rising beneath it (Home, Prove the pain)
+ *   split          – type left, sculpture right (Prove the demand)
  *   split-reverse  – sculpture left, type right (Engine, Momentum)
  */
 export function Hero({ look, eyebrow, title, intro, actions, grid = false }: Props) {

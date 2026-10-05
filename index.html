@@ -3,11 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Liftr — Validate twice. Build once.</title>
-    <meta name="description" content="Liftr is a product studio that helps founders validate twice so they can build once — Spark, Signal, Engine and Momentum." />
+    <title>Liftr — Senior operators who help you build the right product</title>
+    <meta name="description" content="Liftr is a product-led development studio for ambitious pre-seed and seed founders: senior operators who help you build the right product, then build it." />
     <meta name="theme-color" content="#ffffff" />
+    <script>
+      // theme before first paint: saved choice ("light" | "dark"), otherwise
+      // the system setting; dark is the default when the system states none
+      (function () {
+        var m
+        try { m = localStorage.getItem('liftr-mode') } catch (e) {}
+        if (m !== 'light' && m !== 'dark') m = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        document.documentElement.dataset.mode = m
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', m === 'dark' ? '#070c18' : '#ffffff')
+      })()
+    </script>
     <link rel="icon" type="image/svg+xml" href="/assets/liftr-mark.svg" />
-    <link rel="preload" as="image" href="/assets/glass/liftr-glass-1100.webp" imagesrcset="/assets/glass/liftr-glass-700.webp 700w, /assets/glass/liftr-glass-1100.webp 1100w, /assets/glass/liftr-glass-1600.webp 1600w" imagesizes="(max-width: 640px) 110vw, (max-width: 1100px) 70vw, 760px" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/glass/liftr-glass-1200.webp" imagesrcset="/assets/glass/liftr-glass-800.webp 800w, /assets/glass/liftr-glass-1200.webp 1200w, /assets/glass/liftr-glass-1800.webp 1800w, /assets/glass/liftr-glass-2400.webp 2400w" imagesizes="(max-width: 640px) 120vw, 760px" fetchpriority="high" />
   </head>
   <body>
     <div id="root"></div>

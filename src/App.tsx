@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { SiteHeader } from './components/SiteHeader'
 import { Footer } from './components/Footer'
+import { CookieConsent } from './components/CookieConsent'
 import { prefersReducedMotion, scanReveals } from './lib/motion'
 
 /** Hash links (/#about) scroll smoothly; new routes start at the top. */
@@ -38,6 +39,7 @@ export default function App() {
         <Outlet />
       </div>
       <Footer />
+      <CookieConsent />
     </main>
   )
 }

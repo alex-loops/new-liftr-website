@@ -1,0 +1,581 @@
+/* =====================================================================
+   Dark mode — html[data-mode='dark']
+   Set before first paint by the inline script in index.html: the visitor's
+   saved choice, otherwise their system preference. Most of the site follows
+   the tokens; the rules below cover surfaces that need their own values.
+   ===================================================================== */
+html[data-mode='dark'] {
+  color-scheme: dark;
+  --ink: #e8edf4;
+  --ink-soft: #a7b2c3;
+  --mute: #8592a6;
+  --mist: #0b1322;
+  --line: #ffffff14;
+  --line-strong: #ffffff2b;
+  --card: #111a2c;
+  --page-top: #070c18;
+  --ph-a: #142036;
+  --ph-b: #111a2c;
+  --header-bg: #070c18b8;
+  --header-bg-solid: #070c18e6;
+  --focus: var(--aqua);
+  --shadow-soft: 0 1px 2px #0000004d, 0 8px 24px -12px #00000080;
+  --shadow-lift: 0 2px 4px #00000040, 0 28px 60px -24px #000000a6;
+}
+html[data-mode='dark'] body {
+  background: var(--mist);
+}
+
+/* text that used the brand slate as an ink colour */
+html[data-mode='dark'] :is(.phase-label, .phase-link, .phase-corner, .button-subtle) {
+  color: var(--ink);
+}
+html[data-mode='dark'] .eyebrow {
+  color: var(--mute);
+}
+html[data-mode='dark'] .logo-word {
+  filter: brightness(0) invert(0.92);
+}
+html[data-mode='dark'] .button-subtle {
+  box-shadow: inset 0 0 0 1px #ffffff33;
+}
+html[data-mode='dark'] .button {
+  box-shadow: inset 0 0 0 1px #ffffff0d;
+}
+html[data-mode='dark'] .menu-toggle span {
+  background: var(--ink);
+}
+html[data-mode='dark'] .site-header.is-scrolled {
+  border-bottom-color: #ffffff12;
+  box-shadow: 0 10px 30px -24px #000;
+}
+html[data-mode='dark'] .dropdown-panel {
+  box-shadow:
+    0 1px 2px #0000004d,
+    0 24px 60px -18px #000000b3;
+}
+html[data-mode='dark'] .dd-meta {
+  background: transparent;
+}
+
+/* hero + CTA surfaces: the light themes get dark counterparts */
+html[data-mode='dark'] .theme-paper {
+  --surface: linear-gradient(165deg, #121c30 0%, #0c1424 60%, #09101d 100%);
+  --studio: radial-gradient(55% 60% at 50% 100%, #8fe8dc14 0%, #8fe8dc00 70%);
+  --on: #fff;
+  --on-soft: #b3c0cf;
+  --on-mute: #8edfd6;
+  --edge: #ffffff14;
+  --rule: #ffffff0f;
+  --glow-a: #4f7dff3d;
+  --glow-b: #ff5a3c30;
+}
+html[data-mode='dark'] .theme-steel {
+  --surface: linear-gradient(165deg, #222b3b 0%, #1a2230 55%, #141a26 100%);
+  --studio: radial-gradient(50% 60% at 50% 100%, #ffffff0f 0%, #fff0 70%);
+  --on: #fff;
+  --on-soft: #b6c1cf;
+  --on-mute: #a9c1d5;
+  --edge: #ffffff14;
+  --rule: #ffffff10;
+}
+/* navy needs a little lift so it doesn't merge into the page */
+html[data-mode='dark'] .theme-navy {
+  --surface: linear-gradient(165deg, #182a52 0%, #0d1a3a 55%, #0a1430 100%);
+  --edge: #ffffff1a;
+}
+html[data-mode='dark'] :is(.theme-paper, .theme-steel) .button-subtle {
+  color: #fff;
+  box-shadow: inset 0 0 0 1px #ffffff40;
+}
+html[data-mode='dark'] .theme-paper .contact-grain,
+html[data-mode='dark'] .theme-steel .contact-grain {
+  display: block;
+}
+
+/* homepage panels already dark: separate them from the page with an edge */
+html[data-mode='dark'] :is(.proposition, .alignment) {
+  box-shadow: 0 0 0 1px #ffffff12;
+}
+html[data-mode='dark'] .alignment {
+  background: linear-gradient(165deg, #182a52 0%, #0d1a3a 55%, #0a1430 100%);
+}
+
+/* section bands */
+html[data-mode='dark'] .milestones-section,
+html[data-mode='dark'] .objections-section {
+  background: #0a1120;
+}
+html[data-mode='dark'] .milestones-section::before {
+  background: linear-gradient(180deg, #0a112000, #0a1120);
+}
+html[data-mode='dark'] .stat-card::after,
+html[data-mode='dark'] .process-intro-mark {
+  background: #ffffff14;
+}
+html[data-mode='dark'] .stat-figure {
+  color: #fff;
+}
+html[data-mode='dark'] .stat-card strong {
+  color: var(--ink);
+}
+html[data-mode='dark'] .pedigree li {
+  color: #6f7c91;
+}
+html[data-mode='dark'] .pedigree li:hover {
+  color: #fff;
+}
+html[data-mode='dark'] .ph-tag {
+  color: #ff8a83;
+}
+html[data-mode='dark'] .case-teaser-stats div {
+  background: #0b1322;
+}
+html[data-mode='dark'] .case-glance div {
+  background: var(--card);
+}
+html[data-mode='dark'] .faq-icon {
+  background: #ffffff10;
+}
+html[data-mode='dark'] .faq-item:not(.is-open):hover .faq-icon {
+  background: #ffffff1c;
+}
+html[data-mode='dark'] .faq-item.is-open .faq-icon {
+  color: var(--space-deep);
+}
+html[data-mode='dark'] .deliverable-grid .check {
+  background: #ffffff10;
+  color: var(--aqua);
+}
+html[data-mode='dark'] .step-dot {
+  border-color: #ffffff3d;
+}
+html[data-mode='dark'] .glass-object img {
+  filter: drop-shadow(0 0 40px #4f7dff1f);
+}
+
+/* ------------------------------------------------------- mode switch */
+.mode-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex: none;
+  transition:
+    background-color var(--t-fast),
+    border-color var(--t-fast),
+    transform 0.5s var(--ease-out);
+}
+.mode-toggle:hover {
+  border-color: var(--line-strong);
+}
+.mode-toggle:active {
+  transform: scale(0.94);
+}
+.mode-toggle svg {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  transition:
+    transform 0.6s var(--ease-out),
+    opacity 0.3s var(--ease-soft);
+}
+.mode-toggle .sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+html[data-mode='dark'] .mode-toggle .sun {
+  opacity: 1;
+  transform: none;
+}
+html[data-mode='dark'] .mode-toggle .moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+.nav-end {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* cross-fade the whole page when switching (where supported) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+}
+
+/* aqua surfaces stay aqua in dark mode, so their text stays dark */
+html[data-mode='dark'] :is(.process-section, .process-intro, .case-quote) {
+  color: var(--space-deep);
+}
+html[data-mode='dark'] :is(.process-section, .process-intro) .eyebrow {
+  color: #2c5d61;
+}
+html[data-mode='dark'] .theme-aqua .button-subtle {
+  color: var(--space-deep);
+  box-shadow: inset 0 0 0 1px #08112640;
+}
+html[data-mode='dark'] .theme-aqua .eyebrow {
+  color: var(--on-mute);
+}
+
+/* =====================================================================
+   Light mode: the paper surface is a soft grey panel (mirrors the lifted
+   panel in dark mode) instead of white-on-white.
+   ===================================================================== */
+html:not([data-mode='dark']) .theme-paper {
+  --surface: linear-gradient(165deg, #f5f7fa 0%, #eef1f5 55%, #e8ecf1 100%);
+  --studio: radial-gradient(55% 60% at 50% 100%, #ffffffd9 0%, #fff0 70%);
+  --edge: #3137461a;
+}
+
+/* ---------------------------------------------------------------- footer */
+.footer.footer-v3 {
+  display: grid;
+  gap: 22px;
+  align-items: stretch;
+}
+.footer-top,
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px 28px;
+  flex-wrap: wrap;
+}
+.footer-bottom {
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-right: auto;
+  margin-left: 28px;
+}
+.footer-links a,
+.footer-links button,
+.text-link {
+  color: var(--mute);
+  font: inherit;
+  font-size: 13px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: color var(--t-fast);
+}
+.footer-links a:hover,
+.footer-links button:hover,
+.text-link:hover {
+  color: var(--ink);
+}
+.mode-switch {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+.mode-switch button {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--mute);
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition:
+    background-color var(--t-fast),
+    color var(--t-fast);
+}
+.mode-switch button:hover {
+  color: var(--ink);
+}
+.mode-switch button.is-on {
+  background: var(--mist);
+  color: var(--ink);
+}
+html[data-mode='dark'] .mode-switch button.is-on {
+  background: #ffffff14;
+}
+@media (width <= 640px) {
+  .footer-top,
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-links {
+    margin: 0;
+  }
+}
+
+/* --------------------------------------------------------- cookie banner */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.cookie {
+  position: fixed;
+  z-index: 80;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  width: min(420px, calc(100% - 32px));
+  padding: 22px;
+  border-radius: 20px;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow:
+    0 1px 2px #0811260f,
+    0 24px 60px -18px #08112652;
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  visibility: hidden;
+  transition:
+    opacity 0.35s var(--ease-soft),
+    transform 0.6s var(--ease-out),
+    visibility 0s linear 0.6s;
+}
+.cookie.is-open {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition:
+    opacity 0.35s var(--ease-soft),
+    transform 0.6s var(--ease-out),
+    visibility 0s;
+}
+html[data-mode='dark'] .cookie {
+  box-shadow:
+    0 1px 2px #0000004d,
+    0 24px 60px -18px #000000b3;
+}
+.cookie-title {
+  font-family: 'Zalando Sans Expanded', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.cookie-text {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.cookie-text a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--line-strong);
+}
+.cookie-options {
+  margin: 16px 0 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 8px;
+}
+.cookie-opt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--mist);
+  cursor: pointer;
+}
+.cookie-opt.is-locked {
+  cursor: default;
+}
+.cookie-opt strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+.cookie-opt small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--mute);
+}
+.cookie-opt input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.switch {
+  flex: none;
+  position: relative;
+  width: 36px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--line-strong);
+  transition: background-color var(--t-mid) var(--ease-soft);
+}
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px #0811264d;
+  transition: transform 0.4s var(--ease-out);
+}
+.cookie-opt input:checked + .switch {
+  background: var(--aqua-deep);
+}
+.cookie-opt input:checked + .switch::after {
+  transform: translateX(14px);
+}
+.cookie-opt input:disabled + .switch {
+  opacity: 0.6;
+}
+.cookie-opt input:focus-visible + .switch {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.cookie-actions {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.cookie-btn {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  color: var(--ink);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+  transition:
+    background-color var(--t-fast),
+    box-shadow var(--t-fast),
+    transform 0.12s;
+}
+.cookie-btn:hover {
+  background: var(--mist);
+}
+.cookie-btn:active {
+  transform: scale(0.97);
+}
+.cookie-btn.is-primary {
+  background: var(--aqua);
+  color: var(--space-deep);
+  box-shadow: none;
+}
+.cookie-btn.is-primary:hover {
+  background: var(--aqua-bright);
+}
+.cookie-btn.is-link {
+  box-shadow: none;
+  padding-inline: 6px;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (width <= 640px) {
+  .cookie {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    padding: 18px;
+  }
+  .cookie-btn:not(.is-link) {
+    flex: 1 1 100%;
+    padding-block: 12px;
+  }
+  .cookie-btn.is-link {
+    margin: 2px auto 0;
+  }
+}
+
+/* ------------------------------------------------------------ legal pages */
+.legal {
+  width: min(820px, calc(100% - 2 * var(--gutter)));
+  margin: 0 auto;
+  padding: 80px 0 110px;
+}
+.legal h1 {
+  margin-top: 16px;
+  font-size: clamp(40px, 5vw, 64px);
+}
+.legal-note {
+  margin: 28px 0 0;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.legal-note .ph-tag {
+  margin-right: 10px;
+  vertical-align: 1px;
+}
+.legal-note a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legal-sections {
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: legal;
+  display: grid;
+  gap: 28px;
+}
+.legal-sections li {
+  counter-increment: legal;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.legal-sections h2 {
+  font-size: 22px;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.legal-sections h2::before {
+  content: counter(legal) '. ';
+  color: var(--coral);
+}
+.legal-sections p {
+  margin: 12px 0 0;
+  color: var(--ink-soft);
+}
+.legal-foot {
+  margin-top: 36px;
+}
+.legal-foot .text-link {
+  font-size: 15px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

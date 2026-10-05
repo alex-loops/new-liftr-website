@@ -111,7 +111,7 @@
 }
 .phase-card {
   display: block;
-  background: #fff;
+  background: var(--card);
   border: 1px solid #3137461f;
   border-radius: 24px;
   min-height: 330px;
@@ -136,7 +136,7 @@
   letter-spacing: 0.12em;
 }
 .phase-card > div small {
-  color: #687487;
+  color: var(--mute);
   background: var(--mist);
   border-radius: 999px;
   padding: 6px 10px;
@@ -280,7 +280,7 @@
   grid-template-columns: repeat(3, 1fr);
   display: grid;
   overflow: hidden;
-  background: #fff;
+  background: var(--card);
 }
 .process-home-grid article {
   position: relative;
@@ -330,14 +330,14 @@
   background: inherit;
 }
 .process-home-grid .step-num {
-  background: #fff;
+  background: var(--card);
 }
 .step-dot {
   width: 11px;
   height: 11px;
   border-radius: 50%;
   border: 1.5px solid var(--line-strong);
-  background: #fff;
+  background: var(--card);
   transition:
     background-color 0.4s var(--ease-soft),
     border-color 0.4s var(--ease-soft),
@@ -510,7 +510,7 @@
 .stat-card span {
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #6a7587;
+  color: var(--mute);
   font-size: 11px;
   font-weight: 600;
 }
@@ -557,7 +557,7 @@
 }
 .deliverable-grid article {
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--card);
   border-radius: 18px;
   min-height: 190px;
   padding: 26px;
@@ -708,7 +708,7 @@
 }
 .faq-item {
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--card);
   border-radius: 16px;
   margin-top: 12px;
   transition:
@@ -990,7 +990,7 @@
 .footer {
   max-width: var(--content-max);
   border-top: 1px solid var(--line);
-  color: #707b8c;
+  color: var(--mute);
   justify-content: space-between;
   align-items: center;
   gap: 20px;

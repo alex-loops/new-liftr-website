@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { milestones } from '../data/content'
+import { activeMilestones as milestones } from '../data/content'
 import { Button } from './Button'
 import { ChevronDown, LiftrMark } from './Icons'
 import { onFrameScroll } from '../lib/motion'
@@ -44,7 +44,7 @@ export function SiteHeader() {
       if (pathname === '/') {
         const probe = window.innerHeight * 0.35
         let current: string | null = null
-        for (const id of ['about', 'process']) {
+        for (const id of ['about', 'how', 'clients']) {
           const el = document.getElementById(id)
           if (!el) continue
           const r = el.getBoundingClientRect()
@@ -123,8 +123,15 @@ export function SiteHeader() {
           <Link to="/#about" className={`nav-link ${section === 'about' ? 'is-active' : ''}`} {...hoverProps}>
             About Liftr
           </Link>
-          <Link to="/#process" className={`nav-link ${section === 'process' ? 'is-active' : ''}`} {...hoverProps}>
-            Process
+          <Link to="/#how" className={`nav-link ${section === 'how' ? 'is-active' : ''}`} {...hoverProps}>
+            How we work
+          </Link>
+          <Link
+            to="/#clients"
+            className={`nav-link ${section === 'clients' || pathname === '/case-study' ? 'is-active' : ''}`}
+            {...hoverProps}
+          >
+            Clients
           </Link>
           <div
             className={`nav-dropdown ${dropOpen ? 'is-open' : ''}`}
@@ -168,12 +175,13 @@ export function SiteHeader() {
             </div>
           </div>
         </nav>
-        <div className="desktop-cta">
-          <Button href="#contact" size="sm">
-            Talk to a Product Leader
-          </Button>
-        </div>
-        <button
+        <div className="nav-end">
+          <div className="desktop-cta">
+            <Button href="/contact" size="sm">
+              Talk to a Product Leader
+            </Button>
+          </div>
+          <button
           type="button"
           className="menu-toggle"
           aria-expanded={menuOpen}
@@ -183,7 +191,8 @@ export function SiteHeader() {
         >
           <span />
           <span />
-        </button>
+          </button>
+        </div>
       </div>
       <div
         className="mobile-sheet"
@@ -197,7 +206,8 @@ export function SiteHeader() {
         <nav aria-label="Mobile">
           {[
             { to: '/#about', label: 'About Liftr' },
-            { to: '/#process', label: 'Process' },
+            { to: '/#how', label: 'How we work' },
+            { to: '/#clients', label: 'Clients' },
             ...milestones.map((m) => ({ to: `/${m.slug}`, label: m.name, meta: m.proof })),
           ].map((l, i) => (
             <Link
@@ -213,10 +223,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="mobile-sheet-cta" style={{ '--i': 7 } as CSSProperties}>
-          <Button href="#contact">Talk to a Product Leader</Button>
-          <a href="mailto:hello@liftr.studio" className="contact-link">
-            hello@liftr.studio
-          </a>
+          <Button href="/contact">Talk to a Product Leader</Button>
         </div>
       </div>
     </header>

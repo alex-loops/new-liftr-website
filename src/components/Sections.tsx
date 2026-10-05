@@ -103,7 +103,7 @@ export function PhaseCard({ m, n }: { m: Milestone; n: number }) {
       <p className="phase-label">{m.proof}</p>
       <p>{m.summary}</p>
       <span className="phase-link">
-        Explore {m.name} <ArrowRight />
+        See the plan <ArrowRight />
       </span>
     </Link>
   )
@@ -307,7 +307,7 @@ function DeliverableCard({ text, n }: { text: string; n: number }) {
 
 /* ---------------------------------------------- process (milestone pages) */
 
-export function ProcessSteps({ title, steps, note }: { title: string; steps: string[]; note?: string }) {
+export function ProcessSteps({ title, steps, note, plan }: { title: string; steps: string[]; note?: string; plan?: string }) {
   const { ref, active } = useRailProgress<HTMLDivElement>(steps.length)
   return (
     <section className="process-section">
@@ -337,7 +337,7 @@ export function ProcessSteps({ title, steps, note }: { title: string; steps: str
       </div>
       <div className="process-foot" data-reveal="up" style={d(160)}>
         {note && <p>{note}</p>}
-        <Button href="#contact">Book a Discovery Call</Button>
+        <Button href={plan ? `/contact?plan=${plan}` : '/contact'}>Book a Discovery Call</Button>
       </div>
     </section>
   )
@@ -404,7 +404,7 @@ export function Pricing({ text }: { text: string }) {
         {text}
       </p>
       <div data-reveal="up" style={d(260)}>
-        <Button href="#contact">Talk to a Product Leader</Button>
+        <Button href="/contact">Talk to a Product Leader</Button>
       </div>
     </section>
   )
@@ -418,6 +418,7 @@ export function Pricing({ text }: { text: string }) {
  */
 interface ClosingProps {
   look: Look
+  plan?: string
   title?: string
   body?: string
   cta?: string
@@ -428,6 +429,7 @@ export function ContactCTA({
   body = 'You’ve got the vision. Liftr adds the clarity that makes it investable - and buildable.',
   cta = 'Talk to a Product Leader',
   look,
+  plan,
 }: ClosingProps) {
   const ref = useRef<HTMLElement>(null)
   useEffect(() => {
@@ -458,10 +460,7 @@ export function ContactCTA({
           {body}
         </p>
         <div className="contact-actions" data-reveal="up" style={d(320)}>
-          <Button href={`mailto:hello@liftr.studio?subject=${encodeURIComponent(cta)}`}>{cta}</Button>
-          <a href="mailto:hello@liftr.studio" className="contact-link">
-            hello@liftr.studio
-          </a>
+          <Button href={plan ? `/contact?plan=${plan}` : '/contact'}>{cta}</Button>
         </div>
       </div>
       <div className="contact-art">

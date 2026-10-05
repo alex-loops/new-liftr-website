@@ -14,6 +14,14 @@
   --cloud: #fff;
   --line: #dfe4eb;
   --line-strong: #c9d0da;
+  --card: #fff;
+  --mute: #6a7587;
+  --page-top: #fff;
+  --ph-a: #f6f8fa;
+  --ph-b: #fff;
+  --header-bg: #ffffffc7;
+  --header-bg-solid: #ffffffe6;
+  --focus: var(--space-deep);
 
   /* one content width for every section, heroes included */
   --gutter: clamp(20px, 4.2vw, 60px);
