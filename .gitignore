@@ -5,3 +5,9 @@ dist-preview
 .DS_Store
 .vite
 *.tsbuildinfo
+
+# local secrets — never commit (set real values in Vercel)
+.env
+.env.*
+!.env.example
+.vercel
