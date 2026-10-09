@@ -1,12 +1,12 @@
 /**
  * POST /api/contact — Vercel Function (Node.js runtime, Web API signature).
  *
- * Validates the enquiry and emails it to hello@liftr.studio via Resend
+ * Validates the enquiry and emails it to contact@liftr.studio via Resend
  * (https://resend.com). No SDK: a single HTTPS call to Resend's API.
  *
  * Environment variables (Vercel → Project → Settings → Environment Variables):
  *   RESEND_API_KEY   required  Resend API key (keep it out of the code)
- *   CONTACT_TO       optional  where enquiries go          (default hello@liftr.studio)
+ *   CONTACT_TO       optional  where enquiries go          (default contact@liftr.studio)
  *   CONTACT_FROM     optional  sender, on a domain verified in Resend
  *                              (default "Liftr website <website@liftr.studio>")
  */
@@ -81,7 +81,7 @@ export async function POST(request: Request): Promise<Response> {
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       from: process.env.CONTACT_FROM || 'Liftr website <website@liftr.studio>',
-      to: [process.env.CONTACT_TO || 'hello@liftr.studio'],
+      to: [process.env.CONTACT_TO || 'contact@liftr.studio'],
       reply_to: data.email,
       subject: `New enquiry: ${data.name}${data.company ? ` (${data.company})` : ''}${data.plan ? ` · ${data.plan}` : ''}`,
       text,

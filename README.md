@@ -19,7 +19,7 @@ npm run prepare:glass  # regenerate hero sculpture images from assets-src/
 1. In Vercel: **Add New → Project → Import** `alex-loops/new-liftr-website`. The Vite preset and `vercel.json` (build, output, SPA rewrites) are picked up automatically.
 2. **Settings → Environment Variables** (Production + Preview):
    - `RESEND_API_KEY` — from resend.com → API Keys
-   - `CONTACT_TO` — `hello@liftr.studio` (default)
+   - `CONTACT_TO` — `contact@liftr.studio` (default)
    - `CONTACT_FROM` — `Liftr website <website@liftr.studio>` (default)
 3. In Resend, **Domains → Add `liftr.studio`** and add the DNS records it shows (SPF/DKIM) at your DNS provider. Until the domain is verified, set `CONTACT_FROM` to `onboarding@resend.dev` for testing (Resend only delivers those to your own account email).
 4. Redeploy. Every push to `main` deploys automatically; other branches get preview URLs.
