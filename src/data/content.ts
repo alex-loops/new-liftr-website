@@ -277,19 +277,19 @@ export const homeHero = {
 export const pedigree = ['Funding Circle', 'Depop', 'Spendesk', 'ClearScore', 'Google']
 
 export const problem = {
-  title: 'Most teams build what you ask. Few help you know what’s worth building.',
+  title: 'Build the right thing, with a team that stays.',
   points: [
     {
-      title: 'Built the wrong thing',
-      body: 'Agencies and freelancers execute the brief - even when the brief is wrong. Founders burn a runway proving it.',
+      title: 'Proof before code',
+      body: 'We challenge the brief before we build it, so your runway goes on what customers actually want.',
     },
     {
-      title: 'Slow and unreliable delivery',
-      body: 'Quality and pace slip once the contract is signed. Timelines drift and trust erodes.',
+      title: 'Pace you can count on',
+      body: 'Senior people and steady weekly progress, with timelines that hold long after kick-off.',
     },
     {
-      title: 'No real partnership',
-      body: 'The team disappears after launch. No skin in the game, no continuity, no ownership of the outcome.',
+      title: 'A partner who stays',
+      body: 'The same team before and after launch, with skin in the game and a stake in the outcome.',
     },
   ],
 }

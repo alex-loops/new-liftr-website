@@ -37,7 +37,7 @@ export function Problem() {
   return (
     <section className="problem-section">
       <p className="eyebrow" data-reveal="up">
-        The problem
+        What to expect
       </p>
       <SplitText text={problem.title} />
       <div className="problem-grid">
