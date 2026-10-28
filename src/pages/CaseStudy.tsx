@@ -41,14 +41,7 @@ export default function CaseStudy() {
         eyebrow="Case study · Pippa Labs"
         title="Pippa Labs - from product proposition to an oversubscribed pre-seed round."
         intro="We helped Pippa Labs shape its proposition, raise £505,000 and build the first version of its product with a dedicated Liftr team."
-        actions={
-          <>
-            <Button href="/contact">Talk to a Product Leader</Button>
-            <Button href="/#clients" variant="subtle" arrow={false}>
-              Back to founder stories
-            </Button>
-          </>
-        }
+        actions={<Button href="/contact">Talk to a Product Leader</Button>}
       />
 
       <section className="case-glance" aria-label="At a glance">

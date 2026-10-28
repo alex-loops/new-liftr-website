@@ -536,3 +536,22 @@
     border-radius: 24px;
   }
 }
+
+/* Closing CTA (split): sculpture centred in its column, and centred under the
+   copy once the layout stacks. */
+.contact-section.layout-split .contact-art {
+  right: auto;
+  left: calc(75% + 12px - var(--gutter) / 2);
+  translate: -50% 0;
+}
+@media (width <= 1100px) {
+  .contact-section.layout-split .contact-art {
+    left: 50%;
+  }
+}
+@media (width <= 1100px) {
+  .liftr-hero .hero-art.hero-art-custom,
+  .liftr-hero.layout-split .hero-art.hero-art-custom {
+    justify-content: center;
+  }
+}
