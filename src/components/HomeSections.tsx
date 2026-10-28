@@ -125,44 +125,40 @@ export function Alignment() {
   )
 }
 
-/* -------------------------------------------------------------- clients */
-/**
- * Featured client case study. Content is placeholder until real,
- * approved client names and outcomes are supplied.
- */
+/* ------------------------------------------------------ founder stories */
+/** Founder stories: the featured case study (Pippa Labs). */
 export function Clients() {
   return (
     <section id="clients" className="clients-section">
       <div className="clients-head">
         <div>
           <p className="eyebrow" data-reveal="up">
-            Clients
+            Founder stories
           </p>
-          <SplitText text="Founders we’ve built with." />
+          <SplitText text="Founders we build with, and back." />
         </div>
-        <span className="ph-tag" data-reveal="up">
-          Placeholder content
-        </span>
       </div>
       <Link to="/case-study" className="case-teaser" data-reveal="rise" viewTransition>
         <div className="case-teaser-copy">
-          <p className="eyebrow">Case study</p>
-          <h3>
-            <span className="ph-inline">[Client]</span> - from <span className="ph-inline">[starting point]</span> to{' '}
-            <span className="ph-inline">[outcome]</span> in <span className="ph-inline">[timeframe]</span>.
-          </h3>
+          <p className="eyebrow">Case study · Pippa Labs</p>
+          <h3>Pippa Labs - from product proposition to an oversubscribed pre-seed round.</h3>
           <p>
-            <span className="ph-inline">[One or two sentences: what we built together and the result it led to.]</span>
+            We helped Pippa Labs shape its proposition and raise its pre-seed round, then built the first version of its
+            product with a dedicated Liftr team.
           </p>
           <span className="phase-link">
             Read the case study <ArrowRight />
           </span>
         </div>
         <dl className="case-teaser-stats">
-          {['Timeline', 'Milestone', 'Outcome'].map((label) => (
+          {[
+            ['Sector', 'AI infrastructure'],
+            ['Raised', '£505k pre-seed'],
+            ['Team', '7 senior specialists'],
+          ].map(([label, value]) => (
             <div key={label}>
               <dt>{label}</dt>
-              <dd className="ph-inline">[ — ]</dd>
+              <dd>{value}</dd>
             </div>
           ))}
         </dl>

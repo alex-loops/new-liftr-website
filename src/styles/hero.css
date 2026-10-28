@@ -465,3 +465,74 @@
     aspect-ratio: auto;
   }
 }
+
+/* ---------------------------------------------------------------------
+   Case study hero: smaller title + partner logos instead of the sculpture
+   --------------------------------------------------------------------- */
+.liftr-hero.hero-compact h1 {
+  font-size: clamp(32px, 3.1vw, 44px);
+  line-height: 1.1;
+}
+.liftr-hero .hero-art.hero-art-custom,
+.liftr-hero.layout-split .hero-art.hero-art-custom {
+  position: relative;
+  inset: auto;
+  width: auto;
+  aspect-ratio: auto;
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.partner-marks {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 40px);
+}
+.partner-mark {
+  display: grid;
+  place-items: center;
+  width: clamp(120px, 13vw, 180px);
+  aspect-ratio: 1;
+  border-radius: 32px;
+  background: #ffffff0a;
+  box-shadow: inset 0 0 0 1px var(--edge);
+}
+.partner-mark svg {
+  width: 56%;
+  height: auto;
+}
+.partner-mark.is-liftr {
+  color: var(--aqua);
+}
+.partner-mark.is-pippa {
+  color: var(--on);
+}
+.partner-plus {
+  font-family: 'Zalando Sans Expanded', sans-serif;
+  font-size: 28px;
+  color: var(--on-soft);
+}
+@media (width <= 1100px) {
+  .liftr-hero.has-custom-art.layout-split {
+    padding-bottom: 64px;
+  }
+  .liftr-hero .hero-art.hero-art-custom,
+  .liftr-hero.layout-split .hero-art.hero-art-custom {
+    justify-content: flex-start;
+    margin-top: 48px;
+  }
+}
+@media (width <= 640px) {
+  .liftr-hero.hero-compact h1 {
+    font-size: clamp(30px, 8.4vw, 36px);
+  }
+  .liftr-hero.has-custom-art.layout-split {
+    padding-bottom: 44px;
+  }
+  .partner-mark {
+    width: 104px;
+    border-radius: 24px;
+  }
+}

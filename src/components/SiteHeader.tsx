@@ -131,7 +131,7 @@ export function SiteHeader() {
             className={`nav-link ${section === 'clients' || pathname === '/case-study' ? 'is-active' : ''}`}
             {...hoverProps}
           >
-            Clients
+            Founders
           </Link>
           <div
             className={`nav-dropdown ${dropOpen ? 'is-open' : ''}`}
@@ -207,7 +207,7 @@ export function SiteHeader() {
           {[
             { to: '/#about', label: 'About Liftr' },
             { to: '/#how', label: 'How we work' },
-            { to: '/#clients', label: 'Clients' },
+            { to: '/#clients', label: 'Founders' },
             ...milestones.map((m) => ({ to: `/${m.slug}`, label: m.name, meta: m.proof })),
           ].map((l, i) => (
             <Link
