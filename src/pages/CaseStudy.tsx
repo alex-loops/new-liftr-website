@@ -38,7 +38,7 @@ export default function CaseStudy() {
         art={<PartnerMarks />}
         eyebrow="Case study · Pippa Labs"
         title="Pippa Labs - from product proposition to an oversubscribed pre-seed round."
-        intro="We helped Pippa Labs shape its proposition, raise £505,000 and build the first version of its product with a dedicated Liftr team."
+        intro="We helped Pippa Labs shape its proposition, raise £500,000 and build the first version of its product with a dedicated Liftr team."
         actions={<Button href="/contact">Talk to a Product Leader</Button>}
       />
 
@@ -46,7 +46,7 @@ export default function CaseStudy() {
         {[
           ['Sector', 'AI infrastructure'],
           ['Working together', 'Since August 2025'],
-          ['Outcome', '£505k pre-seed raised'],
+          ['Outcome', '£500k pre-seed raised'],
         ].map(([k, v], n) => (
           <div key={k} data-reveal="up" style={d(n * 70)}>
             <dt>{k}</dt>
@@ -90,7 +90,7 @@ export default function CaseStudy() {
           </p>
           <SplitText text="An oversubscribed pre-seed round." />
           <p data-reveal="up" style={d(160)}>
-            Pippa Labs raised £505,000 in an oversubscribed pre-seed round and plans to move on to a seed round within six
+            Pippa Labs raised £500,000 in an oversubscribed pre-seed round and plans to move on to a seed round within six
             months.
           </p>
         </div>

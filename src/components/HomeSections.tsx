@@ -153,7 +153,7 @@ export function Clients() {
         <dl className="case-teaser-stats">
           {[
             ['Sector', 'AI infrastructure'],
-            ['Raised', '£505k pre-seed'],
+            ['Raised', '£500k pre-seed'],
             ['Team', '7 senior specialists'],
           ].map(([label, value]) => (
             <div key={label}>
