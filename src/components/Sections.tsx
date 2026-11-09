@@ -197,7 +197,7 @@ export function HomeSpark({ points }: { points: string[] }) {
 /* -------------------------------------------------------- challenge + stat */
 
 /** Counts up the first number in the sentence once it is on screen. */
-function StatCard({ text }: { text: string }) {
+function StatCard({ text, source }: { text: string; source?: string }) {
   const m = text.match(/(\d+(?:\.\d+)?)(%|x)?/)
   const target = m ? parseFloat(m[1]) : 0
   const decimals = m && m[1].includes('.') ? 1 : 0
@@ -245,6 +245,7 @@ function StatCard({ text }: { text: string }) {
         {m[0]}
         {after}
       </strong>
+      {source && <small className="stat-source">Source: {source}</small>}
     </div>
   )
 }
@@ -261,7 +262,7 @@ export function Challenge({ m }: { m: Milestone }) {
           {m.challenge.body}
         </p>
       </div>
-      <StatCard text={m.challenge.stat} />
+      <StatCard text={m.challenge.stat} source={m.challenge.source} />
     </section>
   )
 }
@@ -349,24 +350,28 @@ function AccordionItem({ q, a, defaultOpen, n }: { q: string; a: string; default
   const [open, setOpen] = useState(!!defaultOpen)
   const id = useId()
   return (
-    <div className={`faq-item ${open ? 'is-open' : ''}`} data-reveal="up" style={d(n * 80)}>
-      <h3>
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-controls={`${id}-panel`}
-          id={`${id}-btn`}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span>{q}</span>
-          <span className="faq-icon" aria-hidden>
-            <Plus />
-          </span>
-        </button>
-      </h3>
-      <div className="faq-panel" id={`${id}-panel`} role="region" aria-labelledby={`${id}-btn`} inert={!open}>
-        <div>
-          <p>{a}</p>
+    // The reveal sits on a wrapper: React owns the item's className, so toggling
+    // it open would otherwise wipe the reveal's .is-in and hide the question.
+    <div data-reveal="up" style={d(n * 80)}>
+      <div className={`faq-item ${open ? 'is-open' : ''}`}>
+        <h3>
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls={`${id}-panel`}
+            id={`${id}-btn`}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span>{q}</span>
+            <span className="faq-icon" aria-hidden>
+              <Plus />
+            </span>
+          </button>
+        </h3>
+        <div className="faq-panel" id={`${id}-panel`} role="region" aria-labelledby={`${id}-btn`} inert={!open}>
+          <div>
+            <p>{a}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -378,7 +383,7 @@ export function Objections({ items, title = 'What founders typically ask.' }: { 
     <section className="objections-section">
       <div className="objections-inner">
         <p className="eyebrow" data-reveal="up">
-          Objections
+          Questions
         </p>
         <SplitText text={title} />
         <div className="faq-list">
@@ -464,7 +469,7 @@ export function ContactCTA({
         </div>
       </div>
       <div className="contact-art">
-        <GlassStage sizes="(max-width: 640px) 120vw, 620px" />
+        <GlassStage variant={look.glass} sizes="(max-width: 640px) 120vw, 620px" />
       </div>
     </section>
   )

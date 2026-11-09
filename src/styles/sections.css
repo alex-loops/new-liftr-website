@@ -104,7 +104,7 @@
 }
 .phase-grid {
   max-width: var(--content-max);
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   margin: 52px auto 0;
   display: grid;
@@ -164,7 +164,7 @@
 }
 .phase-card h3 {
   margin-top: 78px;
-  font-size: 42px;
+  font-size: clamp(30px, 2.6vw, 38px);
   transition: transform 0.7s var(--ease-out);
 }
 .phase-label {
@@ -1036,9 +1036,12 @@
   .phase-grid {
     grid-template-columns: 1fr 1fr;
   }
+  .phase-grid > :nth-child(3):last-child {
+    grid-column: 1 / -1;
+  }
   .phase-card h3 {
     margin-top: 60px;
-    font-size: 36px;
+    font-size: 34px;
   }
   .deliverable-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1056,6 +1059,9 @@
 @media (width <= 760px) {
   .phase-grid {
     grid-template-columns: 1fr;
+  }
+  .phase-grid > :nth-child(3):last-child {
+    grid-column: auto;
   }
 }
 @media (width <= 640px) {
@@ -1310,4 +1316,11 @@
   .home-spark {
     padding: 32px 22px;
   }
+}
+
+.stat-source {
+  display: block;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--mute);
 }

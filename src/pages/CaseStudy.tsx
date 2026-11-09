@@ -23,12 +23,10 @@ const steps = [
     body: 'A dedicated Liftr team of five senior engineers and two product designers built the first version, covering devops, data, backend, frontend, AI (two of our engineers hold PhDs in the field), UX and visual design. We’re now helping Pippa Labs onboard its first users and customers.',
   },
 ]
-const P = ({ children }: { children: string }) => <span className="ph-inline">{children}</span>
 
 /**
  * Pippa Labs case study. Content supplied by Claudiu (Oct 2026); Pippa Labs
- * agreed to be named. The founder quote is still a placeholder until it is
- * taken from the Pippa Labs PR announcement.
+ * agreed to be named.
  */
 export default function CaseStudy() {
   usePageMotion('Case study · Liftr')
@@ -96,14 +94,6 @@ export default function CaseStudy() {
             months.
           </p>
         </div>
-        <figure className="case-quote" data-reveal="rise">
-          <blockquote>
-            <P>“[Quote from the founder about working with Liftr.]”</P>
-          </blockquote>
-          <figcaption>
-            <P>[Name, role, company]</P>
-          </figcaption>
-        </figure>
       </section>
 
       <ContactCTA

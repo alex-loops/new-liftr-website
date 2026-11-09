@@ -38,9 +38,8 @@ export default function Home() {
             <p className="eyebrow" data-reveal="up">
               Where to start
             </p>
-            <SplitText text="Prove the pain. Then prove the demand." />
+            <SplitText text="Prove the pain, then the demand, then the product." />
           </div>
-          <span data-reveal="up">2–6 weeks of focused progress</span>
         </div>
         <div className="phase-grid">
           {activeMilestones.map((m, n) => (

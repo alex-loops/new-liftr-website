@@ -1,3 +1,4 @@
+import type React from 'react'
 import { useEffect, useState } from 'react'
 
 type Choice = 'system' | 'light' | 'dark'
@@ -37,10 +38,29 @@ function apply(mode: Mode, animate: boolean) {
   else run()
 }
 
-const OPTIONS: { value: Choice; label: string }[] = [
-  { value: 'system', label: 'System' },
-  { value: 'light', label: 'Light' },
-  { value: 'dark', label: 'Dark' },
+const icon = { width: 16, height: 16, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true } as const
+const SystemIcon = () => (
+  <svg {...icon}>
+    <rect x="3" y="4" width="18" height="12" rx="2" />
+    <path d="M8 20h8M12 16v4" />
+  </svg>
+)
+const SunIcon = () => (
+  <svg {...icon}>
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+  </svg>
+)
+const MoonIcon = () => (
+  <svg {...icon}>
+    <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" />
+  </svg>
+)
+
+const OPTIONS: { value: Choice; label: string; Icon: () => React.JSX.Element }[] = [
+  { value: 'system', label: 'Match system theme', Icon: SystemIcon },
+  { value: 'light', label: 'Light theme', Icon: SunIcon },
+  { value: 'dark', label: 'Dark theme', Icon: MoonIcon },
 ]
 
 /**
@@ -75,9 +95,11 @@ export function ModeSwitch() {
           role="radio"
           aria-checked={choice === o.value}
           className={choice === o.value ? 'is-on' : ''}
+          aria-label={o.label}
+          title={o.label}
           onClick={() => select(o.value)}
         >
-          {o.label}
+          <o.Icon />
         </button>
       ))}
     </div>

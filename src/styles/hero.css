@@ -555,3 +555,79 @@
     justify-content: center;
   }
 }
+
+/* ---------------------------------------------------------------------
+   Frost (Prove the product): cool light surface in light mode, a matching
+   dark surface in dark mode. The clear glass has a cut for each.
+   --------------------------------------------------------------------- */
+.theme-frost {
+  --surface: linear-gradient(165deg, #f8fafc 0%, #edf1f6 55%, #e1e7ef 100%);
+  --studio: radial-gradient(55% 60% at 50% 100%, #ffffffcc 0%, #fff0 70%);
+  --on: var(--space-deep);
+  --on-soft: #2f3a4b;
+  --on-mute: #56657b;
+  --edge: #0811261a;
+  --rule: #08112610;
+  --glow-a: #7fb7ff2e;
+  --glow-b: #ffb4a024;
+}
+html[data-mode='dark'] .theme-frost {
+  --surface: linear-gradient(165deg, #1d2738 0%, #151d2b 55%, #0f1622 100%);
+  --studio: radial-gradient(55% 60% at 30% 100%, #ffffff12 0%, #fff0 70%);
+  --on: #fff;
+  --on-soft: #b6c1cf;
+  --on-mute: #a9c1d5;
+  --edge: #ffffff17;
+  --rule: #ffffff10;
+  --glow-a: #7fb7ff1f;
+  --glow-b: #ffb4a014;
+}
+html[data-mode='dark'] .theme-frost .button-subtle {
+  color: #fff;
+  box-shadow: inset 0 0 0 1px #ffffff40;
+}
+.glass-object img.glass-tone-dark,
+html[data-mode='dark'] .glass-object img.glass-tone-light {
+  display: none;
+}
+html[data-mode='dark'] .glass-object img.glass-tone-dark {
+  display: block;
+}
+.glass-stage.is-clear .glass-sheen {
+  display: none;
+}
+
+/* the clear glass is larger: it fills most of its half of the card */
+@media (width > 1100px) {
+  .liftr-hero.theme-frost.layout-split-reverse .hero-art {
+    left: 1%;
+    bottom: -14%;
+    width: min(820px, 56%);
+  }
+  .contact-section.theme-frost.layout-split-reverse .contact-art {
+    left: 0;
+    bottom: -26%;
+    width: min(660px, 50%);
+  }
+}
+@media (width <= 1100px) {
+  .liftr-hero.theme-frost.layout-split-reverse .hero-art,
+  .contact-section.theme-frost.layout-split-reverse .contact-art {
+    width: min(620px, 92%);
+  }
+}
+
+/* slightly smaller hero title (Prove the product) */
+.liftr-hero.hero-title-sm h1 {
+  font-size: clamp(40px, 4vw, 56px);
+}
+@media (width <= 640px) {
+  .liftr-hero.hero-title-sm h1 {
+    font-size: clamp(34px, 9.4vw, 40px);
+  }
+}
+
+/* the colour sculpture reads a touch brighter on every surface */
+.glass-stage:not(.is-clear) .glass-object img {
+  filter: brightness(1.18) saturate(1.06);
+}

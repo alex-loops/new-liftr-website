@@ -36,7 +36,7 @@ export function Hero({
   const center = look.layout === "center";
   return (
     <section
-      className={`liftr-hero theme-${look.theme} layout-${look.layout}${art ? " has-custom-art" : ""}${compact ? " hero-compact" : ""}`}
+      className={`liftr-hero theme-${look.theme} layout-${look.layout}${art ? " has-custom-art" : ""}${compact ? " hero-compact" : ""}${look.titleSize === "sm" ? " hero-title-sm" : ""}`}
       data-reveal="hero"
       aria-labelledby="hero-title"
     >
@@ -76,6 +76,7 @@ export function Hero({
       ) : (
         <div className="hero-art">
           <GlassStage
+          variant={look.glass}
             eager
             sizes={
               center

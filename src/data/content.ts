@@ -1,20 +1,24 @@
-export type MilestoneSlug = 'prove-the-pain' | 'prove-the-demand' | 'engine' | 'momentum'
+export type MilestoneSlug = 'prove-the-pain' | 'prove-the-demand' | 'prove-the-product' | 'momentum'
 
 /** Surface colour shared by a page's hero and its closing CTA. */
-export type Theme = 'paper' | 'aqua' | 'slate' | 'navy' | 'steel'
+export type Theme = 'paper' | 'aqua' | 'slate' | 'navy' | 'steel' | 'frost'
 /** Hero/CTA composition, following the wireframes. */
 export type Layout = 'center' | 'split' | 'split-reverse'
 
 export interface Look {
   theme: Theme
   layout: Layout
+  /** which glass render to show: the default colour sculpture or the clear one */
+  glass?: 'default' | 'clear'
+  /** slightly smaller hero title */
+  titleSize?: 'sm'
 }
 
 export const homeLook: Look = { theme: 'paper', layout: 'center' }
 
 export interface Milestone {
   slug: MilestoneSlug
-  /** shown in nav, homepage and routes; Engine & Momentum are paused for now */
+  /** shown in nav, homepage and routes; Momentum is paused for now */
   active: boolean
   look: Look
   index: string
@@ -23,7 +27,7 @@ export interface Milestone {
   duration: string
   summary: string
   hero: { title: string; intro: string }
-  challenge: { title: string; body: string; stat: string }
+  challenge: { title: string; body: string; stat: string; source?: string }
   deliverables: string[]
   process: { title: string; steps: string[] }
   deliverablesNote: string
@@ -43,7 +47,7 @@ export const milestones: Milestone[] = [
     index: '01',
     name: 'Prove the pain',
     proof: 'Validate the problem',
-    duration: '2–4 weeks',
+    duration: '1–2 weeks',
     summary: 'Validate that the problem is worth solving before you commit to a build.',
     hero: {
       title: 'Build smarter. Launch faster. Win bigger.',
@@ -53,7 +57,8 @@ export const milestones: Milestone[] = [
     challenge: {
       title: 'Think you know the problem? Great. Now prove it.',
       body: 'Your instincts got you this far - now let’s make sure they hold up in the wild. We put your assumptions under the microscope through fast, structured user validation. So you’re not just building - you’re building what matters.',
-      stat: '80% of first-time founders pivot after launch. Most never validated early enough.',
+      stat: '80% of founders pivot from their original idea at least once.',
+      source: 'Wilbur Labs, April 2026',
     },
     deliverables: [
       'Deep understanding of your users and their pain',
@@ -82,7 +87,7 @@ export const milestones: Milestone[] = [
       },
       { q: 'Can’t we just start building?', a: 'You can, but correcting a wrong bet after the build starts costs far more.' },
     ],
-    deliverablesNote: "Delivered in just 2–4 weeks by your dedicated Product Lead.",
+    deliverablesNote: "Delivered in just 1–2 weeks by your dedicated Product Lead.",
     processNote: "Flexible scope. Tailored pace. Built to match your runway.",
     objectionsTitle: "What founders typically ask.",
     closing: { title: "Let’s make sure you’re building the right thing.", body: "You’ve got the vision. We add the clarity that makes it investable - and buildable.", cta: "Talk to a Product Leader" },
@@ -96,7 +101,7 @@ export const milestones: Milestone[] = [
     index: '02',
     name: 'Prove the demand',
     proof: 'Validate the solution',
-    duration: '4–6 weeks',
+    duration: '2–3 weeks',
     summary: 'Turn your concept into a sharp, testable product and earn early validation.',
     hero: {
       title: 'Prototype something real enough to earn your first customer.',
@@ -106,7 +111,8 @@ export const milestones: Milestone[] = [
     challenge: {
       title: 'You’ve validated the problem. Now it’s time to show the solution.',
       body: 'Your early conviction is solid. Now investors, users and teammates need to see more than slides. This is where your idea becomes something concrete - credible enough to test, share and ship with confidence.',
-      stat: 'Startups that validate demand early raise 30% more pre-seed capital.',
+      stat: '43% of failed startups cite poor product-market fit.',
+      source: 'CB Insights, March 2026',
     },
     deliverables: [
       'Clickable prototype or lean working alpha',
@@ -116,7 +122,7 @@ export const milestones: Milestone[] = [
       'Updated MVP roadmap',
     ],
     process: {
-      title: 'From concept to clarity in 4–6 weeks.',
+      title: 'From concept to clarity in 2–3 weeks.',
       steps: [
         'Scope & align - define what matters most to prove',
         'Design & prototype - lightweight, clean, credible',
@@ -132,29 +138,29 @@ export const milestones: Milestone[] = [
         a: 'Maybe. We combine delivery with strategic product thinking so you build the right thing.',
       },
     ],
-    deliverablesNote: "Built in 4–6 weeks by a senior product team. Nothing generic. Nothing throwaway.",
+    deliverablesNote: "Built in 2–3 weeks by a senior product team. Nothing generic. Nothing throwaway.",
     objectionsTitle: "Smart founders ask the tough questions.",
     closing: { title: "Ready to prove your product with something real?", body: "You get a credible, testable build to win first users, validate demand and move forward with confidence.", cta: "Talk to a Product Leader" },
     pricing:
       'Most Prove the demand builds range between £20k–£40k, depending on depth and complexity. We scope leanly, move quickly and flex to your runway.',
   },
   {
-    slug: 'engine',
-    active: false,
-    look: { theme: 'navy', layout: 'split-reverse' },
+    slug: 'prove-the-product',
+    active: true,
+    look: { theme: 'frost', layout: 'split-reverse', glass: 'clear', titleSize: 'sm' },
     index: '03',
-    name: 'Engine',
-    proof: 'Prove the product',
-    duration: '8–14 weeks',
+    name: 'Prove the product',
+    proof: 'Build the product',
+    duration: '3+ weeks · Bespoke',
     summary: 'Turn a validated concept into a production-ready MVP built for real users.',
     hero: {
       title: 'Build the product that wins customers again and again.',
       intro:
-        'Engine takes your validated concept and turns it into a production-ready MVP - built to serve real users from day one and designed as the foundation for growth, learning and scale.',
+        'We take your validated concept and turn it into a production-ready MVP - built to serve real users from day one and designed as the foundation for growth, learning and scale.',
     },
     challenge: {
       title: 'From proven idea to powerful product.',
-      body: 'You’ve validated demand - now it’s time to deliver. Engine brings together the right team, tools and process to ship a working, investment-ready product. Not just a build - a launchpad for your next stage.',
+      body: 'You’ve validated demand - now it’s time to deliver. We bring together the right team, tools and process to ship a working, investment-ready product. Not just a build - a launchpad for your next stage.',
       stat: 'Products that launch with a validated core see 3x faster user adoption.',
     },
     deliverables: [
@@ -165,7 +171,7 @@ export const milestones: Milestone[] = [
       'Technical foundation for future development',
     ],
     process: {
-      title: 'From concept to customer-ready in 8–14 weeks.',
+      title: 'From concept to customer-ready.',
       steps: [
         'Define & prioritise - scope the MVP around validated needs',
         'Design & build - create production-ready UX and code',
@@ -184,14 +190,14 @@ export const milestones: Milestone[] = [
       },
       {
         q: 'Why not just hire freelancers?',
-        a: 'Engine integrates strategy, product and engineering so you build the right thing - not just build it fast.',
+        a: 'We integrate strategy, product and engineering so you build the right thing - not just build it fast.',
       },
     ],
-    deliverablesNote: "Built in 8–14 weeks by a senior, multi-disciplinary product team.",
+    deliverablesNote: "Built by a senior, multi-disciplinary product team.",
     objectionsTitle: "Addressing founder concerns.",
-    closing: { title: "Ready to launch your MVP with confidence?", body: "Engine delivers a user-ready, investment-ready product that’s built to grow.", cta: "Book an Engine Discovery Call" },
+    closing: { title: "Ready to launch your MVP with confidence?", body: "We deliver a user-ready, investment-ready product that’s built to grow.", cta: "Talk to a Product Leader" },
     pricing:
-      'Most Engine builds range between £60k–£90k, depending on complexity. We work on time and materials - no bloat, no lock-in.',
+      'Most builds range between £60k–£90k, depending on complexity. We work on time and materials - no bloat, no lock-in.',
   },
   {
     slug: 'momentum',
@@ -263,7 +269,7 @@ export const sparkPoints = [
 export const activeMilestones = milestones.filter((m) => m.active)
 export const getMilestone = (slug: string) => activeMilestones.find((m) => m.slug === slug)
 /** old URLs from before the plans were renamed */
-export const legacySlugs: Record<string, MilestoneSlug> = { spark: 'prove-the-pain', signal: 'prove-the-demand' }
+export const legacySlugs: Record<string, MilestoneSlug> = { spark: 'prove-the-pain', signal: 'prove-the-demand', engine: 'prove-the-product' }
 
 /* ------------------------------------------------------------------ home */
 /* Copy adapted from the Liftr pitch deck (2026). */
