@@ -1,0 +1,24 @@
+# Liftr - https://www.liftr.studio
+# Search engines, AI assistants and agents are welcome to read and cite this site.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# AI crawlers and assistants (explicitly allowed)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+
+Sitemap: https://www.liftr.studio/sitemap.xml

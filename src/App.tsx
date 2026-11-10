@@ -4,6 +4,19 @@ import { SiteHeader } from './components/SiteHeader'
 import { Footer } from './components/Footer'
 import { CookieConsent } from './components/CookieConsent'
 import { prefersReducedMotion, scanReveals } from './lib/motion'
+import { SITE, getSeo } from './data/seo'
+
+/** Keeps title, description and canonical in step with client-side navigation. */
+function HeadManager() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    const seo = getSeo(pathname)
+    document.title = seo.title
+    document.querySelector('meta[name="description"]')?.setAttribute('content', seo.description)
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `${SITE}${seo.path}`)
+  }, [pathname])
+  return null
+}
 
 /** Hash links (/#about) scroll smoothly; new routes start at the top. */
 function ScrollManager() {
@@ -34,6 +47,7 @@ export default function App() {
         Skip to content
       </a>
       <ScrollManager />
+      <HeadManager />
       <SiteHeader />
       <div id="content" className="route">
         <Outlet />

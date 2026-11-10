@@ -667,3 +667,14 @@ html[data-mode='dark'] .cookie {
   font-size: 13px;
   color: var(--mute);
 }
+
+/* 404 */
+.not-found {
+  min-height: 52vh;
+}
+.not-found-actions {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}

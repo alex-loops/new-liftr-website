@@ -5,13 +5,14 @@ import { Button } from '../components/Button'
 import { Challenge, ContactCTA, Deliverables, Objections, ProcessSteps } from '../components/Sections'
 import { getMilestone, legacySlugs } from '../data/content'
 import { usePageMotion } from '../hooks/usePageMotion'
+import NotFound from './NotFound'
 
 export default function MilestonePage() {
   const { slug = '' } = useParams()
   const m = getMilestone(slug)
   usePageMotion(m ? `${m.name} · Liftr` : 'Liftr')
   if (!m && legacySlugs[slug]) return <Navigate to={`/${legacySlugs[slug]}`} replace />
-  if (!m) return <Navigate to="/" replace />
+  if (!m) return <NotFound />
   // keyed by plan so every section remounts when moving between plans
   // (stats re-count, reveals and accordions reset)
   return (

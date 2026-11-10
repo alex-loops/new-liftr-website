@@ -3,5 +3,17 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "rewrites": [{ "source": "/((?!api/|assets/).*)", "destination": "/index.html" }]
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/spark", "destination": "/prove-the-pain", "permanent": true },
+    { "source": "/signal", "destination": "/prove-the-demand", "permanent": true },
+    { "source": "/engine", "destination": "/prove-the-product", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(llms.txt|llms-full.txt)",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    }
+  ]
 }

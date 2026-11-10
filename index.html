@@ -6,6 +6,9 @@
     <title>Liftr — Senior operators who help you build the right product</title>
     <meta name="description" content="Liftr is a product-led development studio for ambitious pre-seed and seed founders: senior operators who help you build the right product, then build it." />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" type="text/plain" title="LLM summary" href="/llms.txt" />
+    <link rel="apple-touch-icon" href="/logo.png" />
     <script>
       // theme before first paint: saved choice ("light" | "dark"), otherwise
       // the system setting; dark is the default when the system states none
@@ -14,6 +17,7 @@
         try { m = localStorage.getItem('liftr-mode') } catch (e) {}
         if (m !== 'light' && m !== 'dark') m = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
         document.documentElement.dataset.mode = m
+        document.documentElement.classList.add('js')
         document.querySelector('meta[name="theme-color"]').setAttribute('content', m === 'dark' ? '#070c18' : '#ffffff')
       })()
     </script>

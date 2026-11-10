@@ -201,7 +201,7 @@ function StatCard({ text, source }: { text: string; source?: string }) {
   const m = text.match(/(\d+(?:\.\d+)?)(%|x)?/)
   const target = m ? parseFloat(m[1]) : 0
   const decimals = m && m[1].includes('.') ? 1 : 0
-  const [val, setVal] = useState(prefersReducedMotion() ? target : 0)
+  const [val, setVal] = useState(typeof window === 'undefined' || prefersReducedMotion() ? target : 0)
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const el = ref.current
